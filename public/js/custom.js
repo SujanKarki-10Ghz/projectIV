@@ -1,216 +1,153 @@
-(function($) {
-    "use strict";
-	
-	/* ..............................................
-	   Loader 
-	   ................................................. */
-	$(window).on('load', function() {
-		$('.preloader').fadeOut();
-		$('#preloader').delay(550).fadeOut('slow');
-		$('body').delay(450).css({
-			'overflow': 'visible'
-		});
-	});
+$(document).ready(function () {
+    cartload();
+    $('.increment-btn').click(function (e) {
+        e.preventDefault();
+        var incre_value = $(this).parents('.quantity').find('.qty-input').val();
+        var value = parseInt(incre_value, 10);
+        value = isNaN(value) ? 0 : value;
+        if(value<10){
+            value++;
+            $(this).parents('.quantity').find('.qty-input').val(value);
+        }
 
-	/* ..............................................
-	   Fixed Menu
-	   ................................................. */
+    });
 
-	$(window).on('scroll', function() {
-		if ($(window).scrollTop() > 50) {
-			$('.main-header').addClass('fixed-menu');
-		} else {
-			$('.main-header').removeClass('fixed-menu');
-		}
-	});
+    $('.decrement-btn').click(function (e) {
+        e.preventDefault();
+        var decre_value = $(this).parents('.quantity').find('.qty-input').val();
+        var value = parseInt(decre_value, 10);
+        value = isNaN(value) ? 0 : value;
+        if(value>1){
+            value--;
+            $(this).parents('.quantity').find('.qty-input').val(value);
+        }
+    });
 
-	/* ..............................................
-	   Gallery
-	   ................................................. */
+});
 
-	$('#slides-shop').superslides({
-		inherit_width_from: '.cover-slides',
-		inherit_height_from: '.cover-slides',
-		play: 5000,
-		animation: 'fade',
-	});
+function cartload()
+{
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-	$(".cover-slides ul li").append("<div class='overlay-background'></div>");
+    $.ajax({
+        url: '/load-cart-data',
+        method: "GET",
+        success: function (response) {
+            $('.basket-item-count').html('');
+            var parsed = jQuery.parseJSON(response)
+            var value = parsed; //Single Data Viewing
+            $('.basket-item-count').append($('<span class="badge badge-pill red">'+ value['totalcart'] +'</span>'));
+        }
+    });
+}
+//Added to Cart
+$(document).ready(function () {
+    $('.add-to-cart-btn').click(function (e) {
+        e.preventDefault();
 
-	/* ..............................................
-	   Map Full
-	   ................................................. */
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-	$(document).ready(function() {
-		$(window).on('scroll', function() {
-			if ($(this).scrollTop() > 100) {
-				$('#back-to-top').fadeIn();
-			} else {
-				$('#back-to-top').fadeOut();
-			}
-		});
-		$('#back-to-top').click(function() {
-			$("html, body").animate({
-				scrollTop: 0
-			}, 600);
-			return false;
-		});
-	});
+        var product_id = $(this).closest('.product_data').find('.product_id').val();
+        var quantity = $(this).closest('.product_data').find('.qty-input').val();
 
-	/* ..............................................
-	   Special Menu
-	   ................................................. */
+        $.ajax({
+            url: "/add-to-cart",
+            method: "POST",
+            data: {
+                'quantity': quantity,
+                'product_id': product_id,
+            },
+            success: function (response) {
+                alertify.set('notifier','position','top-right');
+                alertify.success(response.status);
+                cartload();
+            },
+        });
+    });
+});
+// Update Cart Data
+$(document).ready(function () {
 
-	var Container = $('.container');
-	Container.imagesLoaded(function() {
-		var portfolio = $('.special-menu');
-		portfolio.on('click', 'button', function() {
-			$(this).addClass('active').siblings().removeClass('active');
-			var filterValue = $(this).attr('data-filter');
-			$grid.isotope({
-				filter: filterValue
-			});
-		});
-		var $grid = $('.special-list').isotope({
-			itemSelector: '.special-grid'
-		});
-	});
+    $('.changeQuantity').click(function (e) {
+        e.preventDefault();
+        var thisClick= $(this);
+        var quantity = $(this).closest(".cartpage").find('.qty-input').val();
+        var product_id = $(this).closest(".cartpage").find('.product_id').val();
 
-	/* ..............................................
-	   BaguetteBox
-	   ................................................. */
+        var data = {
+            '_token': $('input[name=_token]').val(),
+            'quantity':quantity,
+            'product_id':product_id,
+        };
 
-	baguetteBox.run('.tz-gallery', {
-		animation: 'fadeIn',
-		noScrollbars: true
-	});
+        $.ajax({
+            url: '/update-to-cart',
+            type: 'POST',
+            data: data,
+            success: function (response) {
+                thisClick.closest(".cartpage").find('.cart-grand-total-price').text(response.gtprice);
+                $('#totalajaxcall').load(location.href + ' .totalpricingload');
+                alertify.set('notifier','position','top-right');
+                alertify.success(response.status);
+            }
+        });
+    });
 
-	/* ..............................................
-	   Offer Box
-	   ................................................. */
+});
+// Delete Cart Data
+$(document).ready(function () {
 
-	$('.offer-box').inewsticker({
-		speed: 3000,
-		effect: 'fade',
-		dir: 'ltr',
-		font_size: 13,
-		color: '#ffffff',
-		font_family: 'Montserrat, sans-serif',
-		delay_after: 1000
-	});
+    $('.delete_cart_data').click(function (e) {
+        e.preventDefault();
+        var thisdeletearea=$(this);
+        var product_id = $(this).closest(".cartpage").find('.product_id').val();
 
-	/* ..............................................
-	   Tooltip
-	   ................................................. */
-
-	$(document).ready(function() {
-		$('[data-toggle="tooltip"]').tooltip();
-	});
-
-	/* ..............................................
-	   Owl Carousel Instagram Feed
-	   ................................................. */
-
-	$('.main-instagram').owlCarousel({
-		loop: true,
-		margin: 0,
-		dots: false,
-		autoplay: true,
-		autoplayTimeout: 3000,
-		autoplayHoverPause: true,
-		navText: ["<i class='fas fa-arrow-left'></i>", "<i class='fas fa-arrow-right'></i>"],
-		responsive: {
-			0: {
-				items: 2,
-				nav: true
-			},
-			600: {
-				items: 4,
-				nav: true
-			},
-			1000: {
-				items: 8,
-				nav: true,
-				loop: true
-			}
-		}
-	});
-
-	/* ..............................................
-	   Featured Products
-	   ................................................. */
-
-	$('.featured-products-box').owlCarousel({
-		loop: true,
-		margin: 0,
-		dots: false,
-		autoplay: true,
-		autoplayTimeout: 3000,
-		autoplayHoverPause: true,
-		navText: ["<i class='fas fa-arrow-left'></i>", "<i class='fas fa-arrow-right'></i>"],
-		responsive: {
-			0: {
-				items: 1,
-				nav: true
-			},
-			600: {
-				items: 3,
-				nav: true
-			},
-			1000: {
-				items: 4,
-				nav: true,
-				loop: true
-			}
-		}
-	});
-
-	/* ..............................................
-	   Scroll
-	   ................................................. */
-
-	$(document).ready(function() {
-		$(window).on('scroll', function() {
-			if ($(this).scrollTop() > 100) {
-				$('#back-to-top').fadeIn();
-			} else {
-				$('#back-to-top').fadeOut();
-			}
-		});
-		$('#back-to-top').click(function() {
-			$("html, body").animate({
-				scrollTop: 0
-			}, 600);
-			return false;
-		});
-	});
+        var data = {
+            '_token': $('input[name=_token]').val(),
+            "product_id": product_id,
+        };
 
 
-	/* ..............................................
-	   Slider Range
-	   ................................................. */
 
-	$(function() {
-		$("#slider-range").slider({
-			range: true,
-			min: 0,
-			max: 4000,
-			values: [1000, 3000],
-			slide: function(event, ui) {
-				$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-			}
-		});
-		$("#amount").val("$" + $("#slider-range").slider("values", 0) +
-			" - $" + $("#slider-range").slider("values", 1));
-	});
+        $.ajax({
+            url: '/delete-from-cart',
+            type: 'DELETE',
+            data: data,
+            success: function (response) {
+                //window.location.reload();
+                thisdeletearea.closest(".cartpage").remove();
+                $('#totalajaxcall').load(location.href + ' .totalpricingload');
+                alertify.set('notifier','position','top-right');
+                alertify.success(response.status);
+            }
+        });
+    });
 
-	/* ..............................................
-	   NiceScroll
-	   ................................................. */
+});
+$(document).ready(function () {
 
-	$(".brand-box").niceScroll({
-		cursorcolor: "#9b9b9c",
-	});
-	
-	
-}(jQuery));
+    $('.clear_cart').click(function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: '/clear-cart',
+            type: 'GET',
+            success: function (response) {
+                window.location.reload();
+                alertify.set('notifier','position','top-right');
+                alertify.success(response.status);
+            }
+        });
+
+    });
+
+});
+

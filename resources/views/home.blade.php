@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.frontend')
 
 @section('content')
 <div class="container">
@@ -13,8 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    Welcome to online clothing store
+                    Welcome to Catnest store
                 </div>
             </div>
         </div>

@@ -78,10 +78,9 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
-                    Online Clothing Store
+                    Catnest Store
                 </div>
             </div>
         </div>
