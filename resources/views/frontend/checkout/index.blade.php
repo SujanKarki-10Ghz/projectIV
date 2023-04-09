@@ -109,7 +109,7 @@
                                 </table>
                                 <hr>
                                 <div class="text-right">
-                                    <h5>Grand Total: {{ number_format($total), 0}}</h5>
+                                    <h5>Grand Total: {{ number_format($total,0) }}</h5>
                                 </div>
                             @endif
                          @else

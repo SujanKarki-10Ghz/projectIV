@@ -11,8 +11,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-        $cart_data = json_decode($cookie_data, true);
+        $cart_data = json_decode(Cookie::get('shopping_cart'), true);
         return view('frontend.cart.index')
             ->with('cart_data',$cart_data)
             ;
@@ -21,27 +20,22 @@ class CartController extends Controller
     {
         $prod_id = $request->input('product_id');
         $quantity = $request->input('quantity');
-        // dd($request->all());
         if(Cookie::get('shopping_cart'))
         {
-            $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-            $cart_data = json_decode($cookie_data, true);
-        }
-        else
+            $cart_data = json_decode(Cookie::get('shopping_cart'), true);
+        } else
         {
             $cart_data = array();
         }
-        // dd($cart_data);
         $item_id_list = array_column ($cart_data, 'item_id');
         $prod_id_is_there = $prod_id;
-
         if(in_array($prod_id_is_there, $item_id_list))
         {
             foreach($cart_data as $keys => $values)
             {
                 if($cart_data[$keys]["item_id"] == $prod_id)
                 {
-                    $cart_data[$keys]["item_quantity"] = $request->input('quantity');
+                    $cart_data[$keys]["item_quantity"] = $cart_data[$keys]["item_quantity"] + $request->input('quantity');
                     $item_data = json_encode($cart_data);
                     $minutes = 60;
                     Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
@@ -78,8 +72,7 @@ class CartController extends Controller
     {
         if(Cookie::get('shopping_cart'))
         {
-            $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-            $cart_data = json_decode($cookie_data, true);
+            $cart_data = json_decode(Cookie::get('shopping_cart'), true);
             $totalcart = count($cart_data);
             echo json_encode(array('totalcart' => $totalcart)); die;
             return;
@@ -98,9 +91,7 @@ class CartController extends Controller
 
         if(Cookie::get('shopping_cart'))
         {
-            $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-            $cart_data = json_decode($cookie_data, true);
-
+            $cart_data = json_decode(Cookie::get('shopping_cart'), true);
             $item_id_list = array_column($cart_data, 'item_id');
             $prod_id_is_there = $prod_id;
 
@@ -126,8 +117,7 @@ class CartController extends Controller
     {
         $prod_id = $request->input('product_id');
 
-        $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-        $cart_data = json_decode($cookie_data, true);
+        $cart_data = json_decode(Cookie::get('shopping_cart'), true);
 
         $item_id_list = array_column($cart_data, 'item_id');
         $prod_id_is_there = $prod_id;
