@@ -8,7 +8,7 @@
                 <i class="fas fa-clipboard-list"></i> <span>About</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{{url('group')}}">Laptop Company</a>
+                <a class="dropdown-item" href="{{url('group')}}">Company</a>
                 <a class="dropdown-item" href="{{url('category')}}">Category</a>
                 <a class="dropdown-item" href="{{url('sub-category')}}">Model</a>
                 <a class="dropdown-item" href="{{url('products')}}">Product(items)</a>

@@ -1,8 +1,19 @@
-<nav class="navbar navbar-expand-sm sticky-top navbar-dark" style="background-color:#1b1d21">
-    <img src="{{URL('/images/catnest.png')}}" alt="Catnest Store" style="width:40px;">
+<nav class="navbar navbar-expand-sm sticky-top navbar-dark" style="background-color:#1b1d21" >
+    <img src="{{URL('/images/hamrostore.png')}}" alt="Hamro Store" style="width:40px;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="col-md-5 my-auto">
+        <form id="search-form" action="{{ url('/searching') }}" method = "POST">
+            @csrf
+        <div class="input-group">
+            <input type="text" name= "search_product" id="search_text" class="form-control" placeholder="Search here...">
+            <button type="submit" name="searchbtn" class="input-group-text" id="basic-addon2">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </form>
+</div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">

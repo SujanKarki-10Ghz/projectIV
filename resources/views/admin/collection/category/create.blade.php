@@ -25,7 +25,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Group ID(Name)</label>
+                                        <label for="">Company ID(Name)</label>
                                          <select name="group_id" class="form-control">
                                              <option value="">Select</option>
                                              @foreach($group as $gitem)

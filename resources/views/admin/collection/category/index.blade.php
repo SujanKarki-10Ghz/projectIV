@@ -5,7 +5,7 @@
         <div class ="card mb-4 wow fadeIn">
             <div class="card-body">
                 <h6 class="mb-0">
-                    Collections/ Item
+                    Collections/ Category
                     <a href="{{url('category-deleted-records')}}" class=" badge bg-primary p-2 text-white float-right ml-2">Deleted Records</a>
                     <a href="{{url('category-add')}}" class=" badge bg-primary p-2 text-white float-right">Add Item</a>
                 </h6>
@@ -23,7 +23,7 @@
                         <thead class="table-dark">
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Group Name</th>
+                        <th>Company Name</th>
                         <th>Description</th>
                         <th>Image</th>
                         <th>Show/Hide</th>

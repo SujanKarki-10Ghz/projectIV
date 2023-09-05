@@ -5,7 +5,7 @@
         <div class ="card mb-4">
             <div class="card-body">
                 <h6 class="mb-0">
-                    <span> Collections/Laptop Company</span>
+                    <span> Collections/ Company</span>
                     <a href="{{url('group-deleted-records')}}" class=" badge bg-primary text-white float-right ml-2">Deleted Records</a>
                     <a href="{{url('group-add')}}" class=" badge bg-primary text-white float-right">Add Company</a>
                 </h6>

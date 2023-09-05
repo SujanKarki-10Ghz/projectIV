@@ -7,7 +7,7 @@
                 <h4 class="mb-2 mb-sm-0 pt-1">
                     <a href="#">Collections</a>
                     <span>/</span>
-                    <span>Group Deleted Records</span>
+                    <span>Deleted Records</span>
                 </h4>
             </div>
         </div>

@@ -37,7 +37,7 @@ class OrderController extends Controller
             ];
             $pdf = PDF::loadView('admin.order.invoice', $data);
 
-            return $pdf->download('catneststore.pdf');
+            return $pdf->download('hamrostore.pdf');
         }
         else
         {

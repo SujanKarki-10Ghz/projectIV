@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    Welcome to Catnest store
+                    Welcome to Hamro store
                 </div>
             </div>
         </div>

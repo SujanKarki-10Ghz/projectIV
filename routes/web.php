@@ -25,6 +25,8 @@ Route::get('about-us','Frontend\FrontendController@aboutus');
 
 Auth::routes();
 //Frontend
+Route::get('/searchajax', 'Frontend\CollectionController@SearchautoComplete')->name('searchproductajax');
+Route::post('/searching', 'Frontend\CollectionController@result');
 
 Route::get('collection/{group_url}','Frontend\CollectionController@groupview');
 Route::get('collection/{group_url}/{cate_url}','Frontend\CollectionController@categoryview');

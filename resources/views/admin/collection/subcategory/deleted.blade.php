@@ -7,7 +7,7 @@
                 <h4 class="mb-2 mb-sm-0 pt-1">
                     <a href="#">Collections</a>
                     <span>/</span>
-                    <span>Category Deleted Records</span>
+                    <span>Model Deleted Records</span>
                 </h4>
             </div>
         </div>
@@ -42,12 +42,7 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
-
         </div>
-
-
     </div>
 @endsection

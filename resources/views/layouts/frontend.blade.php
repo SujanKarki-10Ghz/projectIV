@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" sizes="180x180" href="favicon.ico">
     <title>
-    @yield('title') CatnestStore
+    @yield('title') HamroStore
     </title>
     <meta name="descriptions" content="@yield('meta_desc')">
     <meta name="keywords" content="@yield('meta_tags')">
@@ -19,6 +19,10 @@
 
     <!-- Alertify CSS-->
     <link rel="stylesheet" href="{{asset('css/alertify.min.css')}}"/>
+
+    <!-- Autocomplete -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
     <!--owl-carousel Css-->
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
@@ -38,7 +42,34 @@
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/owl.carousel.js')}}"></script>
 <script src="{{ asset('js/custom.js') }}" defer></script>
+<!-- Autocomplete -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+    $(document).ready(function(){
+        src = "{{ route('searchproductajax') }}";
+        $( "#search_text" ).autocomplete({
+          source: function(request, response){
+            $.ajax({
+                url: src,
+                data: {
+                    term: request.term
+                },
+                dataType: "json",
+                success: function(data){
+                    response(data);
+                }
+            })
 
+          },
+          minLength:1,
+        });
+
+        $(document).on( 'click', '.ui-menu-item', function(){
+            $('#search-form').submit();
+        })
+
+    })
+</script>
 <!-- Alertify JavaScript -->
 <script src="{{asset('js/alertify.min.js')}}"></script>
 <script>

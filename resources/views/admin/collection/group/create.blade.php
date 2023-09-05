@@ -6,7 +6,7 @@
             <div class="col-md-12">
                <div class="card mb-4 wow fadeIn">
                    <div class="card-body">
-               <h6>Collection/Groups</h6>
+               <h6>Collection/ Add Company </h6>
             </div>
                </div>
             </div>

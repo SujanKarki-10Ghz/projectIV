@@ -4,7 +4,7 @@
         <div class ="card mb-4 wow fadeIn">
             <div class="card-body">
                 <h6 class="mb-0">
-                    Collections/Sub-Category Edit
+                    Collections/Model Edit
                     <a href="{{url('sub-category')}}" class=" badge bg-danger p-2 text-white float-right">Back</a>
                 </h6>
             </div>

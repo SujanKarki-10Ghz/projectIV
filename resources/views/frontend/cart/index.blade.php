@@ -123,7 +123,7 @@
                                                             <a href="#" data-toggle="modal" data-target="#LoginModal" class="btn btn-success btn-block checkout-btn">
                                                                 PROCEED TO CHECKOUT</a>
                                                         @endif
-                                                        <h6 class="mt-3">Checkout with Catnest Store</h6>
+                                                        <h6 class="mt-3">Checkout with Hamro Store</h6>
                                                     </div>
                                                 </div>
                                             </div>

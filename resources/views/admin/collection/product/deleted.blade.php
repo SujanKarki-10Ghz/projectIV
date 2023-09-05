@@ -19,7 +19,7 @@
                         <thead>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Sub-Category Name</th>
+                        <th>Model Name</th>
                         <th>Image</th>
                         <th>Show/Hide</th>
                         <th>Action</th>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catnest Store</title>
+    <title>Hamro Store</title>
     <style>
         body{
             background-color: #F6F6F6;
@@ -98,11 +98,11 @@
     <div class="brand-section">
         <div class="">
             <div class="">
-                <h1 class="text-white">Catnest Store</h1>
+                <h1 class="text-white">Hamro Store</h1>
             </div>
             <div class="">
                 <div class="company-details">
-                    <p class="text-white">Catnest Store</p>
+                    <p class="text-white">Hamro Store</p>
                     <p class="text-white">Tinkune, Subidhanagar, Kathamandu</p>
                     <p class="text-white">+977 9841123456</p>
                 </div>

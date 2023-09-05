@@ -8,7 +8,7 @@
         </button>
         <button class="btn-primary border-0">
             <i class="fas fa-home"></i>
-        <a href="{{url('dashboard')}}" class="text-white text-decoration-none hover-shadow">Catnest Store</a>
+        <a href="{{url('dashboard')}}" class="text-white text-decoration-none hover-shadow">Hamro Store</a>
         </button>
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

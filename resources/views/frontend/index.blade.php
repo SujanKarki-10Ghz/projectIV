@@ -43,15 +43,15 @@
                         <div class="service-block-inner">
                             <h3 class="border-bottom font-weight-bold">Socials</h3>
                             <p><i class="fa fa-whatsapp"></i>WhatsApp: <a href="tel:+977 9841544344">+977 9841544344</a></p>
-                            <p><i class="fa fa-facebook"></i>Facebook: <a href="https://www.facebook.com/">Catnest Store</a></p>
-                            <p><i class="fa fa-instagram"></i>Instagram: <a href="https://www.instagram.com/">Online_123</a></p>
+                            <p><i class="fa fa-facebook"></i>Facebook: <a href="https://www.facebook.com/">Hamro Store</a></p>
+                            <p><i class="fa fa-instagram"></i>Instagram: <a href="https://www.instagram.com/">Hamro_Store</a></p>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="service-block-inner">
                             <h3 class="border-bottom font-weight-bold">About Us</h3>
-                            <p>We are Catnest Store, aimed at providing the best quality and best laptop & accessories of PC at cheapest price possible.</p>
+                            <p>We are Hamro Store, aimed at providing the best quality and best laptop & accessories of PC at cheapest price possible.</p>
                         </div>
                     </div>
                 </div>

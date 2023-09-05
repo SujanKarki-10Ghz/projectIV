@@ -16,7 +16,7 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+        $cookie_data = (Cookie::get('shopping_cart'));
         $cart_data = json_decode($cookie_data, true);
         return view ('frontend.checkout.index')
             ->with('cart_data',$cart_data)
@@ -53,7 +53,7 @@ class CheckoutController extends Controller
             $trackno =rand(1111,9999);
             $order = new Order;
             $order->user_id = $user_id;
-            $order->tracking_no = 'CatnestStore'.$trackno;
+            $order->tracking_no = 'HamroStore'.$trackno;
             //$order->tracking_msg= " ";
             $order->payment_mode="Cash on Delivery";
             $order->payment_status="0";
@@ -64,7 +64,7 @@ class CheckoutController extends Controller
             $last_order_id = $order->id;
 
             //Ordered /Cart Items
-            $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+            $cookie_data =(Cookie::get('shopping_cart'));
             $cart_data = json_decode($cookie_data, true);
             $items_in_cart =$cart_data;
 
@@ -91,7 +91,7 @@ class CheckoutController extends Controller
     {
         if(Cookie::get('shopping_cart'))
         {
-            $cookie_data = stripcslashes(Cookie::get('shopping_cart'));
+            $cookie_data =(Cookie::get('shopping_cart'));
             $cart_data =json_decode($cookie_data, true);
             $items_in_cart =$cart_data;
             $total="0";

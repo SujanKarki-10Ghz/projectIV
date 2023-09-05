@@ -7,7 +7,7 @@
                 <div class="card mb-4 wow fadeIn">
                     <div class="card-body">
                         <h6 class="mb-0">
-                            Collection/Groups Edit
+                            Collection/Edit Details
                             <a href="{{url('group')}}" class=" badge bg-danger p-2 text-white float-right">Back</a>
                         </h6>
                     </div>
